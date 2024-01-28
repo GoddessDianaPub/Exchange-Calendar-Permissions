@@ -9,4 +9,4 @@ If you are working in a multiple language environment, you will first need to ma
 Otherwise you will get an error like the message bellow: 
 
 Write-ErrorMessage : Ex43C0AC|Microsoft.Exchange.Configuration.Tasks.ManagementObjectNotFoundException|The operation couldn't be 
-performed because 'usero@group.com:\calendar' couldn't be found.
+performed because 'user@group.com:\calendar' couldn't be found.
