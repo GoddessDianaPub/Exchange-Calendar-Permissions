@@ -1,0 +1,45 @@
+#Open Powersheel ISE
+Connect-ExchangeOnline
+
+# Checking user's calendar permission:
+Get-MailboxFolderPermission -Identity "<user's UPN>:\calendar"
+Get-MailboxFolderPermission -Identity "<user's UPN>:\לוח שנה"
+
+# Checking user's calendar permission with full username:
+Get-MailboxFolderPermission -Identity "<user's UPN>:\calendar" | select User
+
+# Grant Editor calendar permission:
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Editor
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Editor
+
+# Grant Reviewer calendar permission:
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Reviewer
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Reviewer
+
+# Edit exsiting permission entry to reviewer permission
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Reviewer
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Reviewer
+
+# Edit exsiting permission entry to editor permission
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Editor
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Editor
+
+# Grant Editor Delegates permission:
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags Delegate
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags Delegate
+
+# Grant Reviewer Delegates permission:
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Reviewer -SharingPermissionFlags Delegate
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Reviewer -SharingPermissionFlags Delegate
+
+# Grant calendar permission + Delegates:
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags Delegate
+Add-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags Delegate
+
+# Remove calendar permission:
+Remove-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN"
+Remove-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN"
+
+# Remove delegates:
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\Calendar" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags None
+Set-MailboxFolderPermission -Identity "ManagerMail UPN:\לוח שנה" -User "SecretaryMail UPN" -AccessRights Editor -SharingPermissionFlags None
