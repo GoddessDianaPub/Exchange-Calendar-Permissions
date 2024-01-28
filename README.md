@@ -8,5 +8,7 @@ If you are working in a multiple language environment, you will first need to ma
 
 Otherwise you will get an error like the message bellow: 
 
-> **&ffe6e6;** Write-ErrorMessage : Ex43C0AC|Microsoft.Exchange.Configuration.Tasks.ManagementObjectNotFoundException|The operation couldn't be 
+<blockquote style="color: red; background-color: #ffe6e6; padding: 10px;">
+    <strong>Note:</strong> Write-ErrorMessage : Ex43C0AC|Microsoft.Exchange.Configuration.Tasks.ManagementObjectNotFoundException|The operation couldn't be 
 performed because 'user@group.com:\calendar' couldn't be found.
+</blockquote>
